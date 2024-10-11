@@ -24,7 +24,7 @@ public class RegexTest {
                 .isFalse();
 
         softly.assertThat(Pattern.matches(fourDigitsRegexWithStartAndEnd, fourDigitsWithNewLine))
-                .as("Pattern.matches(regex) needs the entire string to match, so the trailing \n prevents it.")
+                .as("Pattern.matches(regex, input) needs the entire string to match, so the trailing \n prevents it.")
                 .isFalse();
 
         // Many would expect the trailing \n to prevent a match because it should not be allowed by a regex that specifies exactly 4 digits and nothing else between start and end.
@@ -61,7 +61,7 @@ public class RegexTest {
                 .isFalse();
 
         softly.assertThat(Pattern.matches(fourDigitsRegexWithStartAndEnd, fourDigitsWithNewLine))
-                .as("Pattern.matches(regex) needs the entire string to match, so the trailing \n prevents it.")
+                .as("Pattern.matches(regex, input) needs the entire string to match, so the trailing \n prevents it.")
                 .isFalse();
 
         softly.assertThat(Pattern.compile(fourDigitsRegexWithStartAndEnd).matcher(fourDigitsWithNewLine).find())
@@ -85,7 +85,7 @@ public class RegexTest {
                 .isFalse();
 
         softly.assertThat(Pattern.matches(fourDigitsRegexWithStartAndEnd, fourDigitsWithNewLine))
-                .as("Pattern.matches(regex) needs the entire string to match, so the trailing \n prevents it.")
+                .as("Pattern.matches(regex, input) needs the entire string to match, so the trailing \n prevents it.")
                 .isFalse();
 
         softly.assertThat(Pattern.compile(fourDigitsRegexWithStartAndEnd).matcher(fourDigitsWithNewLine).find())
@@ -107,7 +107,7 @@ public class RegexTest {
                 .isTrue();
 
         softly.assertThat(Pattern.matches(fourDigitsRegexWithStartAndEnd, fourDigits))
-                .as("Pattern.matches(regex)")
+                .as("Pattern.matches(regex, input)")
                 .isTrue();
 
         // ^ and $ only match the beginning and end of the entire input when not using MULTILINE (the default)
@@ -132,7 +132,7 @@ public class RegexTest {
                 .isFalse();
 
         softly.assertThat(Pattern.matches(fourDigitsRegexWithoutStartAndEnd, fourDigitsBetweenLetters))
-                .as("Pattern.matches(regex) requires the entire string to match even when the regex does not specify ^$")
+                .as("Pattern.matches(regex, input) requires the entire string to match even when the regex does not specify ^$")
                 .isFalse();
 
         // ^ and $ only match the beginning and end of the entire input when not using MULTILINE (the default)
